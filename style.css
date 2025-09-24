@@ -213,3 +213,67 @@ th { font-weight: 600; color: var(--text-secondary); font-size: 12px; text-trans
 tbody tr { border-bottom: 1px solid var(--border-color); }
 tbody tr:last-child { border-bottom: none; }
 tbody tr:hover { background-color: var(--bg-tertiary); }
+
+/* ===============================================
+   MOBILE RESPONSIVE STYLES
+   (Applies to screens 768px or smaller)
+   =============================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Stack the main layout instead of side-by-side */
+    .app-container {
+        flex-direction: column;
+    }
+
+    /* 2. Hide the main navigation sidebar on mobile */
+    .main-nav {
+        display: none;
+        /* A common approach is to replace this with a "hamburger" menu, 
+           but for a quick fix, hiding it makes the app usable. */
+    }
+
+    /* 3. Make the slide-out panel take up more screen width */
+    .details-panel {
+        width: 90vw; /* 90% of the viewport width */
+    }
+
+    /* 4. Allow parking slots to wrap instead of overflowing */
+    .parking-row, .bike-row {
+        flex-wrap: wrap; /* Allows items to wrap to the next line */
+        justify-content: flex-start; /* Align items to the left */
+        gap: 10px;
+    }
+    
+    .parking-grid-content {
+        min-width: 100%; /* Remove the fixed minimum width */
+    }
+
+    /* 5. Adjust the parking layout container */
+    #layout-page {
+        height: auto; /* Allow height to be determined by content */
+    }
+
+    .layout-container {
+        flex-direction: column; /* Stack the legend and parking lot */
+        align-items: stretch;
+    }
+    
+    .layout-legend {
+        width: auto; /* Make legend full width */
+        order: -1; /* Move legend to the top */
+        margin-bottom: 20px;
+    }
+
+    /* 6. Adjust font sizes and padding for smaller screens */
+    h1 {
+        font-size: 22px;
+    }
+    
+    .card-value {
+        font-size: 24px;
+    }
+    
+    .content-wrapper {
+        padding: 0 15px 15px 15px; /* Reduce side padding */
+    }
+}
