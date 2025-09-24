@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParkIO Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +21,10 @@
 
     <div class="app-container">
         <nav class="main-nav">
-            <div class="nav-logo">PARK<span class="logo-accent">IO</span></div>
+            <div class="nav-header">
+                <div class="nav-logo">PARK<span class="logo-accent">IO</span></div>
+                <div id="close-nav-btn" class="close-btn"><span class="material-icons">close</span></div>
+            </div>
             <ul>
                 <li class="nav-item active" data-target="dashboard-page"><span class="material-icons">dashboard</span>Dashboard</li>
                 <li class="nav-item" data-target="layout-page"><span class="material-icons">grid_view</span>Layout</li>
@@ -33,6 +35,9 @@
 
         <main class="content-wrapper">
             <header class="main-header">
+                <div id="hamburger-menu" class="hamburger-icon">
+                    <span class="material-icons">menu</span>
+                </div>
                 <h1 id="page-title">Dashboard</h1>
                 <div id="theme-switcher" title="Toggle Theme">
                     <span class="material-icons">light_mode</span>
@@ -50,8 +55,8 @@
                 <div class="activity-log"></div>
             </div>
 
-           <div id="layout-page" class="page">
-                <div class="layout-container">
+            <div id="layout-page" class="page">
+                 <div class="layout-container">
                     <div class="parking-lot-wrapper">
                         <div class="parking-grid-content">
                             <div class="parking-row top-row"><div class="slot car-slot occupied" data-slot-id="A-01"><span>A01</span></div><div class="slot car-slot available" data-slot-id="A-02"><span>A02</span></div><div class="slot car-slot occupied" data-slot-id="A-03"><span>A03</span></div><div class="slot car-slot available" data-slot-id="A-04"><span>A04</span></div><div class="slot car-slot available" data-slot-id="A-05"><span>A05</span></div><div class="slot car-slot reserved" data-slot-id="A-06"><span>A06</span></div><div class="slot car-slot occupied" data-slot-id="A-07"><span>A07</span></div><div class="slot car-slot available" data-slot-id="A-08"><span>A08</span></div></div>
@@ -60,7 +65,6 @@
                             <div class="bike-row"><div class="slot bike-slot available" data-slot-id="M-01"><span>M01</span></div><div class="slot bike-slot occupied" data-slot-id="M-02"><span>M02</span></div><div class="slot bike-slot reserved" data-slot-id="M-03"><span>M03</span></div><div class="slot bike-slot available" data-slot-id="M-04"><span>M04</span></div><div class="slot bike-slot available" data-slot-id="M-05"><span>M05</span></div><div class="slot bike-slot occupied" data-slot-id="M-06"><span>M06</span></div><div class="slot bike-slot available" data-slot-id="M-07"><span>M07</span></div><div class="slot bike-slot reserved" data-slot-id="M-08"><span>M08</span></div><div class="slot bike-slot available" data-slot-id="M-09"><span>M09</span></div><div class="slot bike-slot available" data-slot-id="M-10"><span>M10</span></div><div class="slot bike-slot available" data-slot-id="M-11"><span>M11</span></div><div class="slot bike-slot occupied" data-slot-id="M-12"><span>M12</span></div><div class="slot bike-slot available" data-slot-id="M-13"><span>M13</span></div><div class="slot bike-slot available" data-slot-id="M-14"><span>M14</span></div><div class="slot bike-slot reserved" data-slot-id="M-15"><span>M15</span></div><div class="slot bike-slot available" data-slot-id="M-16"><span>M16</span></div></div>
                         </div>
                     </div>
-                    
                     <div class="layout-legend">
                         <h4>Legend</h4>
                         <div class="legend-item"><span class="color-box available"></span>Available</div>

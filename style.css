@@ -1,19 +1,13 @@
 /* ===============================================
-  /* ===============================================
    THEME COLOR VARIABLES
    =============================================== */
 :root {
     /* Dark Theme (Default) */
     --bg-primary: #11131A; --bg-secondary: #1A1D26; --bg-tertiary: #2A2F3D;
     --border-color: #2A2F3D; --text-primary: #E0E0E0; --text-secondary: #8A91A0;
-    
-    /* UPDATED SLOT COLORS */
-    --slot-available-bg: #2E403D;
-    --slot-occupied-bg: #4B2B33;
-    --slot-reserved-bg: #514224;
-    --slot-maintenance-bg: #333;
+    --slot-available-bg: #2E403D; --slot-occupied-bg: #4B2B33;
+    --slot-reserved-bg: #514224; --slot-maintenance-bg: #333;
     --slot-selected-bg: var(--accent-blue);
-
     --accent-red: #F44336; --accent-yellow: #FFC107; --accent-blue: #2196F3;
     --accent-green: #4CAF50; --accent-blue-glow: rgba(33, 150, 243, 0.6);
 }
@@ -22,12 +16,8 @@ body.light-theme {
     /* Light Theme */
     --bg-primary: #F4F6F8; --bg-secondary: #FFFFFF; --bg-tertiary: #E9ECEF;
     --border-color: #DEE2E6; --text-primary: #1A1D26; --text-secondary: #6c757d;
-
-    /* UPDATED SLOT COLORS */
-    --slot-available-bg: #E8F5E9;
-    --slot-occupied-bg: #FFEBEE;
-    --slot-reserved-bg: #FFF8E1;
-    --slot-maintenance-bg: #ced4da;
+    --slot-available-bg: #E8F5E9; --slot-occupied-bg: #FFEBEE;
+    --slot-reserved-bg: #FFF8E1; --slot-maintenance-bg: #ced4da;
     --slot-selected-bg: var(--accent-blue);
 }
 
@@ -54,6 +44,7 @@ h2 { margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid var(--borde
    NAVIGATION SIDEBAR
    =============================================== */
 .main-nav { width: 240px; flex-shrink: 0; background-color: var(--bg-secondary); padding: 20px; display: flex; flex-direction: column; border-right: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; z-index: 20; }
+.nav-header { display: flex; justify-content: space-between; align-items: center; width: 100%;}
 .nav-logo { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 40px; color: var(--text-primary); }
 .logo-accent { color: var(--accent-blue); }
 .main-nav ul { list-style: none; padding: 0; margin: 0; }
@@ -96,91 +87,37 @@ h2 { margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid var(--borde
 /* ===============================================
    LAYOUT PAGE & PARKING SLOTS
    =============================================== */
-#layout-page {
-    height: calc(100vh - 150px);
-    display: flex;
-    flex-direction: column;
-}
-
-.layout-container {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.parking-lot-wrapper {
-    flex-grow: 1;
-    position: relative;
-    background-color: var(--bg-tertiary);
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+#layout-page { height: calc(100vh - 150px); display: flex; flex-direction: column; }
+.layout-container { display: flex; gap: 20px; align-items: center; }
+.parking-lot-wrapper { flex-grow: 1; position: relative; background-color: var(--bg-tertiary); border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: center; }
 .parking-grid-content { padding-bottom: 15px; }
 .parking-row { display: flex; justify-content: center; }
 .center-aisle { height: 60px; }
 .bike-row { display: flex; justify-content: center; gap: 6px; margin-top: 30px; padding: 10px; background-color: var(--bg-secondary); border-radius: 8px; }
-
-.slot {
-    position: relative; display: flex; align-items: center; justify-content: center;
-    box-sizing: border-box; cursor: pointer; transition: all 0.2s ease-in-out;
-    border-top: 2px solid var(--border-color); color: var(--text-primary);
-    font-size: 12px; font-weight: 500; overflow: hidden;
-}
+.slot { position: relative; display: flex; align-items: center; justify-content: center; box-sizing: border-box; cursor: pointer; transition: all 0.2s ease-in-out; border-top: 2px solid; color: var(--text-primary); font-size: 12px; font-weight: 500; overflow: hidden; }
 .slot span { display: block; transform: skewX(15deg); z-index: 2; }
-
 .car-slot { width: 80px; height: 40px; transform: skewX(-15deg); }
-.bike-slot { width: 38px; height: 60px; border: none; border-top: 2px solid var(--border-color); border-radius: 4px; }
+.bike-slot { width: 38px; height: 60px; border-radius: 4px; }
 .bike-slot span { transform: none; }
-
-/* Slot Statuses & Hovers with NEW COLORS */
-.slot.available { background-color: var(--slot-available-bg); border-top-color: var(--accent-green); }
-.slot.occupied { background-color: var(--slot-occupied-bg); border-top-color: var(--accent-red); cursor: default; }
-.slot.reserved { background-color: var(--slot-reserved-bg); border-top-color: var(--accent-yellow); }
+.slot.available { background-color: var(--slot-available-bg); border-color: var(--accent-green); }
+.slot.occupied { background-color: var(--slot-occupied-bg); border-color: var(--accent-red); cursor: default; }
+.slot.reserved { background-color: var(--slot-reserved-bg); border-color: var(--accent-yellow); }
 .slot.maintenance { background: repeating-linear-gradient(45deg, var(--slot-maintenance-bg), var(--slot-maintenance-bg) 10px, var(--bg-tertiary) 10px, var(--bg-tertiary) 20px); cursor: not-allowed; }
 .slot.selected { background-color: var(--slot-selected-bg) !important; border-color: #fff !important; box-shadow: 0 0 15px var(--accent-blue-glow); }
 .car-slot.selected { transform: skewX(-15deg) scale(1.05); }
 .bike-slot.selected { transform: scale(1.05); }
-
 .progress-container { position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background-color: rgba(0, 0, 0, 0.2); z-index: 1; }
 .progress-fill { height: 100%; width: 0%; background: var(--accent-red); border-radius: 0 2px 2px 0; transition: width 1s linear; }
-
-/* NEW LEGEND STYLES */
-.layout-legend {
-    flex-shrink: 0;
-    width: 150px;
-    background-color: var(--bg-secondary);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
-.layout-legend h4 {
-    margin: 0 0 15px 0;
-    font-weight: 500;
-    color: var(--text-secondary);
-    text-align: center;
-}
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    font-size: 13px;
-}
-.color-box {
-    width: 15px;
-    height: 15px;
-    border-radius: 3px;
-    margin-right: 10px;
-    border-top: 2px solid;
-}
+.layout-legend { flex-shrink: 0; width: 150px; background-color: var(--bg-secondary); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+.layout-legend h4 { margin: 0 0 15px 0; font-weight: 500; color: var(--text-secondary); text-align: center; }
+.legend-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 13px; }
+.color-box { width: 15px; height: 15px; border-radius: 3px; margin-right: 10px; border-top: 2px solid; }
 .color-box.available { background-color: var(--slot-available-bg); border-color: var(--accent-green); }
 .color-box.occupied { background-color: var(--slot-occupied-bg); border-color: var(--accent-red); }
 .color-box.reserved { background-color: var(--slot-reserved-bg); border-color: var(--accent-yellow); }
 .color-box.maintenance { background-color: var(--slot-maintenance-bg); border-color: var(--text-secondary); }
 .color-box.selected { background-color: var(--slot-selected-bg); border-color: #fff; }
+
 /* ===============================================
    DETAILS PANEL CONTENT & FORMS
    =============================================== */
@@ -215,65 +152,74 @@ tbody tr:last-child { border-bottom: none; }
 tbody tr:hover { background-color: var(--bg-tertiary); }
 
 /* ===============================================
-   MOBILE RESPONSIVE STYLES
-   (Applies to screens 768px or smaller)
+   HAMBURGER & MOBILE RESPONSIVE STYLES
    =============================================== */
+/* Hide mobile-only elements on desktop by default */
+.hamburger-icon,
+#close-nav-btn {
+    display: none;
+}
+
+/* Styles for screens 768px or smaller */
 @media (max-width: 768px) {
-    
-    /* 1. Stack the main layout instead of side-by-side */
-    .app-container {
-        flex-direction: column;
+    /* Show and style mobile-only elements */
+    .hamburger-icon, #close-nav-btn {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        color: var(--text-secondary);
+        cursor: pointer;
     }
 
-    /* 2. Hide the main navigation sidebar on mobile */
+    .main-header {
+        justify-content: space-between;
+    }
+    .main-header h1 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
     .main-nav {
-        display: none;
-        /* A common approach is to replace this with a "hamburger" menu, 
-           but for a quick fix, hiding it makes the app usable. */
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 1002;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-in-out;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+    }
+    .main-nav.open {
+        transform: translateX(0);
+    }
+    .nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 
-    /* 3. Make the slide-out panel take up more screen width */
     .details-panel {
-        width: 90vw; /* 90% of the viewport width */
+        width: 90vw;
     }
-
-    /* 4. Allow parking slots to wrap instead of overflowing */
-    .parking-row, .bike-row {
-        flex-wrap: wrap; /* Allows items to wrap to the next line */
-        justify-content: flex-start; /* Align items to the left */
-        gap: 10px;
-    }
-    
-    .parking-grid-content {
-        min-width: 100%; /* Remove the fixed minimum width */
-    }
-
-    /* 5. Adjust the parking layout container */
     #layout-page {
-        height: auto; /* Allow height to be determined by content */
+        height: auto;
     }
-
     .layout-container {
-        flex-direction: column; /* Stack the legend and parking lot */
+        flex-direction: column;
         align-items: stretch;
     }
-    
     .layout-legend {
-        width: auto; /* Make legend full width */
-        order: -1; /* Move legend to the top */
+        width: auto;
+        order: -1;
         margin-bottom: 20px;
     }
-
-    /* 6. Adjust font sizes and padding for smaller screens */
-    h1 {
-        font-size: 22px;
-    }
-    
-    .card-value {
-        font-size: 24px;
-    }
-    
-    .content-wrapper {
-        padding: 0 15px 15px 15px; /* Reduce side padding */
+    h1 { font-size: 22px; }
+    .card-value { font-size: 24px; }
+    .content-wrapper { padding: 0 15px 15px 15px; }
+    .parking-row, .bike-row {
+        flex-wrap: wrap;
     }
 }
