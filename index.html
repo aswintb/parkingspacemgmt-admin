@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkIO Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="panel-overlay" class="hidden"></div>
+    <aside class="details-panel">
+        <div id="close-panel-btn" class="close-btn"><span class="material-icons">close</span></div>
+        <h2>Slot Inspector</h2>
+        <div id="panel-content"><p class="placeholder">Select a parking slot to view details.</p></div>
+    </aside>
+
+    <div class="app-container">
+        <nav class="main-nav">
+            <div class="nav-logo">PARK<span class="logo-accent">IO</span></div>
+            <ul>
+                <li class="nav-item active" data-target="dashboard-page"><span class="material-icons">dashboard</span>Dashboard</li>
+                <li class="nav-item" data-target="layout-page"><span class="material-icons">grid_view</span>Layout</li>
+                <li class="nav-item" data-target="stats-page"><span class="material-icons">bar_chart</span>Statistics</li>
+                <li class="nav-item" data-target="history-page"><span class="material-icons">history</span>History</li>
+            </ul>
+        </nav>
+
+        <main class="content-wrapper">
+            <header class="main-header">
+                <h1 id="page-title">Dashboard</h1>
+                <div id="theme-switcher" title="Toggle Theme">
+                    <span class="material-icons">light_mode</span>
+                </div>
+            </header>
+            
+            <div id="dashboard-page" class="page active">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="card-icon" style="color: var(--accent-blue);"><span class="material-icons">electric_car</span></div><div class="card-content"><div class="card-title">Live Occupancy</div><div class="card-value" id="live-occupancy-value">--%</div></div></div>
+                    <div class="stat-card"><div class="card-icon" style="color: var(--accent-green);"><span class="material-icons">event_available</span></div><div class="card-content"><div class="card-title">Available Slots</div><div class="card-value" id="available-slots-value">--</div></div></div>
+                    <div class="stat-card"><div class="card-icon" style="color: var(--accent-yellow);"><span class="material-icons">login</span></div><div class="card-content"><div class="card-title">Today's Check-ins</div><div class="card-value" id="todays-checkins-value">--</div></div></div>
+                    <div class="stat-card"><div class="card-icon" style="color: var(--accent-red);"><span class="material-icons">logout</span></div><div class="card-content"><div class="card-title">Today's Check-outs</div><div class="card-value" id="todays-checkouts-value">--</div></div></div>
+                </div>
+                <h2>Recent Activity</h2>
+                <div class="activity-log"></div>
+            </div>
+
+           <div id="layout-page" class="page">
+                <div class="layout-container">
+                    <div class="parking-lot-wrapper">
+                        <div class="parking-grid-content">
+                            <div class="parking-row top-row"><div class="slot car-slot occupied" data-slot-id="A-01"><span>A01</span></div><div class="slot car-slot available" data-slot-id="A-02"><span>A02</span></div><div class="slot car-slot occupied" data-slot-id="A-03"><span>A03</span></div><div class="slot car-slot available" data-slot-id="A-04"><span>A04</span></div><div class="slot car-slot available" data-slot-id="A-05"><span>A05</span></div><div class="slot car-slot reserved" data-slot-id="A-06"><span>A06</span></div><div class="slot car-slot occupied" data-slot-id="A-07"><span>A07</span></div><div class="slot car-slot available" data-slot-id="A-08"><span>A08</span></div></div>
+                            <div class="center-aisle"></div>
+                            <div class="parking-row bottom-row"><div class="slot car-slot available" data-slot-id="B-01"><span>B01</span></div><div class="slot car-slot occupied" data-slot-id="B-02"><span>B02</span></div><div class="slot car-slot available" data-slot-id="B-03"><span>B03</span></div><div class="slot car-slot maintenance" data-slot-id="B-04"><span>B04</span></div><div class="slot car-slot reserved" data-slot-id="B-05"><span>B05</span></div><div class="slot car-slot occupied" data-slot-id="B-06"><span>B06</span></div><div class="slot car-slot available" data-slot-id="B-07"><span>B07</span></div><div class="slot car-slot occupied" data-slot-id="B-08"><span>B08</span></div></div>
+                            <div class="bike-row"><div class="slot bike-slot available" data-slot-id="M-01"><span>M01</span></div><div class="slot bike-slot occupied" data-slot-id="M-02"><span>M02</span></div><div class="slot bike-slot reserved" data-slot-id="M-03"><span>M03</span></div><div class="slot bike-slot available" data-slot-id="M-04"><span>M04</span></div><div class="slot bike-slot available" data-slot-id="M-05"><span>M05</span></div><div class="slot bike-slot occupied" data-slot-id="M-06"><span>M06</span></div><div class="slot bike-slot available" data-slot-id="M-07"><span>M07</span></div><div class="slot bike-slot reserved" data-slot-id="M-08"><span>M08</span></div><div class="slot bike-slot available" data-slot-id="M-09"><span>M09</span></div><div class="slot bike-slot available" data-slot-id="M-10"><span>M10</span></div><div class="slot bike-slot available" data-slot-id="M-11"><span>M11</span></div><div class="slot bike-slot occupied" data-slot-id="M-12"><span>M12</span></div><div class="slot bike-slot available" data-slot-id="M-13"><span>M13</span></div><div class="slot bike-slot available" data-slot-id="M-14"><span>M14</span></div><div class="slot bike-slot reserved" data-slot-id="M-15"><span>M15</span></div><div class="slot bike-slot available" data-slot-id="M-16"><span>M16</span></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="layout-legend">
+                        <h4>Legend</h4>
+                        <div class="legend-item"><span class="color-box available"></span>Available</div>
+                        <div class="legend-item"><span class="color-box occupied"></span>Occupied</div>
+                        <div class="legend-item"><span class="color-box reserved"></span>Reserved</div>
+                        <div class="legend-item"><span class="color-box maintenance"></span>Maintenance</div>
+                        <div class="legend-item"><span class="color-box selected"></span>Selected</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stats-page" class="page">
+                <div class="controls"><button class="btn active">This Month</button><button class="btn">This Week</button><button class="btn">Today</button></div>
+                <div class="stats-grid"><div class="stat-card"><h3>Total Revenue</h3><div class="card-value">₹1,24,550</div></div><div class="stat-card"><h3>Total Bookings</h3><div class="card-value">1,430</div></div><div class="stat-card"><h3>Avg. Occupancy</h3><div class="card-value">72%</div></div></div>
+                <div class="chart-container"><h3>Revenue Over Time</h3><div class="chart-placeholder">[Line chart showing daily revenue would be rendered here]</div></div>
+                <div class="chart-container"><h3>Peak Hours Analysis</h3><div class="chart-placeholder">[Bar chart showing booking counts by hour would be rendered here]</div></div>
+            </div>
+
+            <div id="history-page" class="page">
+                <div class="controls"><input type="text" id="history-search" placeholder="Search by Vehicle Number..."></div>
+                <div class="table-container">
+                    <table><thead><tr><th>Booking ID</th><th>Vehicle No.</th><th>Slot</th><th>Check-in</th><th>Check-out</th><th>Duration</th><th>Cost</th></tr></thead><tbody id="history-table-body"></tbody></table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
